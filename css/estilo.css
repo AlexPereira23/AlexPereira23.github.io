@@ -55,7 +55,7 @@ header {
     display: flex;
     justify-content: center;
     height: 90px;
-    background-color: #121214;
+    background-color: #121214;  
 }
 .container--menu {
     width: 1004px;
@@ -76,10 +76,6 @@ header {
 }
 .menuItens {
     display: flex;
-}
-.menuItens ul, .menuItens li {
-    margin: 0;
-    padding: 0;
 }
 .menuItens li a {
     display: block;
@@ -176,7 +172,6 @@ section {
 .info-redes-icones {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
     border-bottom: 3px solid #F5F5F5;
 }
 .info-redes-icones i {
@@ -186,7 +181,8 @@ section {
 .copy {
     display: block;
     text-align: center;
-    margin-bottom: 30px;
+    margin: 30px auto;
+    max-width: 300px;
 }
 /* ASIDE */
 aside {
@@ -343,13 +339,21 @@ footer {
         margin-left: 25px;
     }
     .menu .menuItens {
-        display: none;
-        flex-direction: column;
+        display: block;
         position: absolute;
-        top:89px;
-        left:0;
         width: 100%;
-        background-color: #121214;
+        top: 89px;
+        right: 0px;
+        height: 0px;
+        visibility: hidden;
+        transition: .6s;
+        background: #121214;
+        z-index: 1000;
+        overflow-y: hidden;
+    }
+    .menu.active .menuItens {
+        visibility: visible;
+        height: calc(100vh - 90px);
     }
     .menu-mobile {
         display: flex;
@@ -357,15 +361,15 @@ footer {
         margin-right: 10px;
         cursor: pointer;
     }
-    .menu .menuItens li:hover {
-        background-color: red;
-        width: 100%;
+    .menu .menuItens a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
     }
     .menu .menuItens a {
-        margin-left: 15px;
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgba(207, 207, 207, 0.3);
     }
     .menu .menuItens a:hover {
-        border: none;
         color: #F5F5F5;
     }
     section {
@@ -384,7 +388,7 @@ footer {
         margin: 9px;
     }
     .container--aside {
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }

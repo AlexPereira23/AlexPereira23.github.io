@@ -1,45 +1,50 @@
 // MENU MOBILE
-document.querySelector('.menu-mobile').addEventListener('click',()=>{
-    let menuMobile = document.querySelector('.menuItens');
-    if(menuMobile.style.display == 'flex') {
-        document.querySelector('.menuItens').style.display = 'none';
-    } else {
-        document.querySelector('.menuItens').style.display = 'flex';
-    }
-});
+function menuMobile() {
+const btnMobile = document.querySelector('.menu-mobile');
+function toggleMenu(){ 
+    const navMenu = document.querySelector('.menu');
+    navMenu.classList.toggle('active');
+}
+btnMobile.addEventListener('click',toggleMenu);
+}
+menuMobile();
 
 // Máquina de Escrever
 const texto = document.querySelector('.info-section-texto p');
 function maquinaEscrever(elemento) {
     const textoArray = elemento.innerHTML.split('');
     elemento.innerHTML = '';
-    textoArray.forEach((letra, i) =>{
-        setTimeout(()=>{
+    textoArray.forEach((letra, i) => {
+        setTimeout(() => {
             elemento.innerHTML += letra;
-        },75 * i);
+        }, 75 * i);
     });
 }
 maquinaEscrever(texto);
+
+const tempo = new Date();
+const ano = tempo.getFullYear();
+document.querySelector('.copy').innerHTML = `Alex Pereira ${ano} - Todos os direitos reservados`;
 
 // SLIDER
 let indexImage = 0;
 let images = document.querySelectorAll('.image div');
 let maxImages = images.length;
 
-function nextImage(){
+function nextImage() {
 
     images[indexImage].classList.remove('selected');
     indexImage++;
 
-    if(indexImage >= maxImages) {
+    if (indexImage >= maxImages) {
         indexImage = 0;
     }
 
     images[indexImage].classList.add('selected');
-}   
-function start() {
-    setInterval(() =>{
-        nextImage();
-    },3000);
 }
-window.addEventListener('load',start);
+function start() {
+    setInterval(() => {
+        nextImage();
+    }, 3000);
+}
+window.addEventListener('load', start);
